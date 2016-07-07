@@ -22,28 +22,26 @@ RevWorldPlugin.prototype.apply = function(compiler) {
     var sourceMap = {};
 
     self.patterns.forEach(function(pattern) {
-      // console.log(pattern);
-      glob.sync(pattern.src, { cwd: pattern.cwd, nodir: true }).forEach(function(item) {
-        var file = path.join(pattern.cwd, item);
-        // console.log(file);
+      var cwd = pattern.cwd ? (path.isAbsolute(pattern.cwd) ? pattern.cwd : path.resolve(process.cwd(), pattern.cwd)) : process.cwd();
+      var src = pattern.src;
+      var dest = path.isAbsolute(pattern.dest) ? pattern.dest : path.resolve(process.cwd(), pattern.dest);
+      glob.sync(src, { cwd: cwd, nodir: true }).forEach(function(item) {
+        var file = path.join(cwd, item);
         var createHash = crypto.createHash(self.options.algorithm);
         var fileData = fs.readFileSync(file);
         var hash = createHash.update(fileData).digest('hex');
         var suffix = hash.slice(0, self.options.length);
         var ext = path.extname(file);
-        // var newName = [path.basename(file, ext), suffix, ext.slice(1)].join('.');
         var newName = self.options.format
           .replace('[name]', path.basename(file, ext))
           .replace('[hash]', suffix)
           .replace('[ext]', ext);
-        // console.log(newName);
-        var destDir = path.join(pattern.dest, path.dirname(item))
+        var destDir = path.join(dest, path.dirname(item))
         var destFile = path.join(destDir, newName);
         if (!fs.existsSync(destDir)) {
           mkdirp.sync(destDir);
         }
         fs.writeFileSync(destFile, fileData);
-        // fs.renameSync(file, destFile);
         var value = path.join(path.dirname(item), newName);
         sourceMap[item] = value;
         console.log(`${item} ====> ${value}`);
