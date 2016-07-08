@@ -4,10 +4,11 @@ var fs = require('fs');
 var crypto = require('crypto');
 var glob = require('glob');
 var mkdirp = require('mkdirp');
+var assign = require('object-assign');
 
 function RevWorldPlugin(patterns, options) {
   this.patterns = util.isArray(patterns) ? patterns : [patterns];
-  this.options = Object.assign({}, options, {
+  this.options = assign({}, options, {
     format: '[name]-[hash][ext]',
     algorithm: 'sha256',
     length: 8
@@ -44,7 +45,7 @@ RevWorldPlugin.prototype.apply = function(compiler) {
         fs.writeFileSync(destFile, fileData);
         var value = path.join(path.dirname(item), newName);
         sourceMap[item] = value;
-        console.log(`${item} ====> ${value}`);
+        console.log('%s  ====> %s', item, value);
       });
 
     });
