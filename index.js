@@ -27,6 +27,9 @@ RevWorldPlugin.prototype.apply = function(compiler) {
       var src = pattern.src;
       var dest = path.isAbsolute(pattern.dest) ? pattern.dest : path.resolve(process.cwd(), pattern.dest);
       glob.sync(src, { cwd: cwd, nodir: true }).forEach(function(item) {
+        if (pattern.exclude && pattern.exclude.indexOf(path.basename(item)) > -1) {
+          return;
+        }
         var file = path.join(cwd, item);
         var createHash = crypto.createHash(self.options.algorithm);
         var fileData = fs.readFileSync(file);
