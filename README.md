@@ -34,9 +34,9 @@ A pattern looks like:
     - is optional
     - The base directory (absolute path!) for reversion
     - defaults to process.cwd()
-* `regexps`
+* `glob`
     - is optional
-    - regExp from template replace
+    - [glob](https://github.com/isaacs/node-glob) options
 
 #### Available options:
 * `format`
