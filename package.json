@@ -1,6 +1,6 @@
 {
   "name": "packing-rev-webpack-plugin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/zhongzhi107/packing-rev-webpack-plugin#readme",
   "dependencies": {
-    "glob": "^7.0.5",
+    "packing-glob": "^1.0.1",
     "mkdirp": "^0.5.1",
     "object-assign": "^4.1.0"
   }

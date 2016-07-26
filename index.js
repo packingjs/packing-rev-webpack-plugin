@@ -2,7 +2,7 @@ var util = require('util');
 var path = require('path');
 var fs = require('fs');
 var crypto = require('crypto');
-var glob = require('glob');
+var packingGlob = require('packing-glob');
 var mkdirp = require('mkdirp');
 var assign = require('object-assign');
 
@@ -27,7 +27,7 @@ RevWorldPlugin.prototype.apply = function(compiler) {
       var src = pattern.src;
       var dest = path.isAbsolute(pattern.dest) ? pattern.dest : path.resolve(process.cwd(), pattern.dest);
       var options = assign({ cwd: cwd, nodir: true}, pattern.glob);
-      glob.sync(src, options).forEach(function(item) {
+      packingGlob(src, options).forEach(function(item) {
         var file = path.join(cwd, item);
         var createHash = crypto.createHash(self.options.algorithm);
         var fileData = fs.readFileSync(file);

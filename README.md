@@ -27,6 +27,7 @@ A pattern looks like:
 * `src`
     - is required
     - can be a glob
+    - can be an Array
 * `dest`
     - is optional
     - if not absolute, it's relative to the build root
@@ -60,6 +61,12 @@ module.exports = {
     plugins: [
         new RevWebpackPlugin([
             { src: 'from/file.txt', dest: 'dist' },
+
+            // {output}/to/file.txt
+            { cwd: 'assets', src: 'images/**/*', dest: 'imgs' }
+        ]),
+        new RevWebpackPlugin([
+            { src: ['**/*.png', '!notrev.png'], dest: 'dist' },
 
             // {output}/to/file.txt
             { cwd: 'assets', src: 'images/**/*', dest: 'imgs' }
