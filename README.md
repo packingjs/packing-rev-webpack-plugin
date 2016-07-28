@@ -1,5 +1,7 @@
 ## Packing Rev Webpack Plugin
 
+[![NPM](https://nodei.co/npm/packing-rev-webpack-plugin.png)](https://nodei.co/npm/packing-rev-webpack-plugin/)
+
 This is a [webpack](http://webpack.github.io/) plugin that reversion files to the build directory.
 
 ### Getting started
