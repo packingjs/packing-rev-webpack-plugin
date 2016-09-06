@@ -10,7 +10,7 @@ function RevWorldPlugin(patterns, options) {
   this.patterns = util.isArray(patterns) ? patterns : [patterns];
   this.options = assign({}, options, {
     format: '[name]-[hash][ext]',
-    algorithm: 'sha256',
+    algorithm: 'md5',
     length: 8
   });
 }
