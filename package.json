@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zhongzhi107/packing-rev-webpack-plugin.git"
+    "url": "git+https://github.com/packingjs/packing-rev-webpack-plugin.git"
   },
   "keywords": [
     "webpack",
@@ -17,9 +17,9 @@
   "author": "zhongzhi <zhong.zhi@163.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/zhongzhi107/packing-rev-webpack-plugin/issues"
+    "url": "https://github.com/packingjs/packing-rev-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/zhongzhi107/packing-rev-webpack-plugin#readme",
+  "homepage": "https://github.com/packingjs/packing-rev-webpack-plugin#readme",
   "dependencies": {
     "packing-glob": "^1.0.1",
     "mkdirp": "^0.5.1",
